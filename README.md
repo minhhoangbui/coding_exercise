@@ -49,9 +49,9 @@ Data structures
 
 ### Stacks and queues
 
-- [ ] Queue class (queue.py)
+- [x] Queue class (queue.py)
 - [ ] Heap priority queue (priority_queue.py)
-- [ ] Stack class (stack.py)
+- [x] Stack class (stack.py)
 - [ ] Stack that finds min in O(1) (min_stack.py)
 - [ ] Solve Hanoi towers using stacks (stack_algos.py)
 - [ ] Sort stack using only push, pop, peek and empty (stack_algos.py)
