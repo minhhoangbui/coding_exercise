@@ -21,6 +21,9 @@ class Stack(object):
     
     def push(self, value):
         return self.stack.append(value)
+    
+    def peek(self):
+        return self.stack[-1]
 
 def createStack(elements):
     stack = Stack()
@@ -29,7 +32,16 @@ def createStack(elements):
     return stack
 
 if __name__ == '__main__':
-    my_stack = createStack([8, 9, 6, 8])
+    my_stack = Stack()
+    print(my_stack.is_empty())
+    my_stack.push(4)
+    my_stack.push('dog')
+    print(my_stack.peek())
+    my_stack.push(True)
     print(my_stack.size())
+    print(my_stack.is_empty())
+    my_stack.push(8.4)
     print(my_stack.pop())
+    print(my_stack.pop())
+    print(my_stack.size())
     

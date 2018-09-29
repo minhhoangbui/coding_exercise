@@ -53,14 +53,20 @@ Data structures
 - [ ] Heap priority queue (priority_queue.py)
 - [x] Stack class (stack.py)
 - [ ] Stack that finds min in O(1) (min_stack.py)
-- [ ] Solve Hanoi towers using stacks (stack_algos.py)
+- [x] Solve Hanoi towers using stacks (stack_algos.py)
 - [ ] Sort stack using only push, pop, peek and empty (stack_algos.py)
 - [ ] Build a queue using two stacks (stack_algos.py)
+
+### Hashing
+- [ ] Hash table class
 
 Algorithms
 ----------
 
-### Sorting
+### Sorting and Searching
+- [x] Binary search (search.py)
+- [x] Sequential search (search.py)
+- [x] Bubble sort (sort.py)
 - [ ] Insertion sort (sort.py) 
 - [ ] Selection sort (sort.py) 
 - [ ] Merge sort (sort.py) 
