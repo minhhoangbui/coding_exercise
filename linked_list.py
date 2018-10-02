@@ -46,6 +46,12 @@ class LinkedList(object):
                 current = current.get_next()
         return target
     
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.value)
+            current = current.get_next()
+
     def delete(self, value):
         current = self.head
         found = False
@@ -71,10 +77,7 @@ def creatList(elements):
 
 if __name__ == '__main__':
     my_list = creatList([1, 2, 3, 4, 5])
-    print(my_list.search(3))
-    # my_list.delete(6)
-    my_list.delete(3)
-    print(my_list.search(3))
+    my_list.print_list()
 
 
 

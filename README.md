@@ -16,7 +16,7 @@ Data structures
 ### Linked lists
 
 - [x] List class (linked_list.py) - 1
-- [ ] Remove duplicates (linked_list_algos.py)
+- [x] Remove duplicates (linked_list_algos.py)
 - [ ] Find nth last element (linked_list_algos.py)
 - [ ] Remove node given only its object (linked_list_algos.py)
 - [ ] Sum linked lists with one digit per node (linked_list_algos.py)
@@ -97,7 +97,7 @@ Programming Puzzles
 ### String Manipulation
 - [ ] Check if two strings are anagrams in O(n + m) time (anagrams.py) 
 - [ ] Find the longest palindromic substring in O(n^2) time (lc_longest_palindrome.py)
-- [ ] Check if a string has balanced delimiters in O(n) time (delim_balanced.py)
+- [x] Check if a string has balanced delimiters in O(n) time (stack_algos.py)
 - [ ] Reverse words while maintaining spaces and tabs in O(n) time (reverse_words.py)
 - [ ] Longest substring without repeating characters in O(n) time (lc_longest_nonrepeat_substring.py) 
 - [ ] Longest contiguous substring of 2 distinct characters in O(n) time (substring_two_chars.py)
