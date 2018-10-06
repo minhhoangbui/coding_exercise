@@ -63,9 +63,79 @@ def shell_sort(a_list):
             gap_insertion_sort(a_list, i, sublist_count)
         sublist_count = sublist_count // 2
 
+def merge_sort(a_list):
+    print('Splitting', a_list)
+    if len(a_list) > 1:
+        mid = len(a_list) // 2
+        left_half = a_list[:mid]
+        right_half = a_list[mid:]
+
+        merge_sort(left_half)
+        merge_sort(right_half)
+
+        i = 0
+        j = 0
+        k = 0
+
+        print(left_half)
+        print(right_half)
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                a_list[k] = left_half[i]
+                i += 1
+            else:
+                a_list[k] = right_half[j]
+                j += 1
+            k += 1
+        
+        while i < len(left_half):
+            a_list[k] = left_half[i]
+            i += 1
+            k += 1
+        
+        while j < len(right_half):
+            a_list[k] = right_half[j]
+            j += 1
+            k += 1
+    print('Merging', a_list)
 
 
+def quick_sort(a_list):
+    
+    def _quick_sort(a_list, first, last):
+        if first <  last:
+            split_point = partition(a_list, first, last)
+
+            _quick_sort(a_list, first, split_point - 1)
+            _quick_sort(a_list, split_point + 1, last)
+    
+    def partition(a_list, first, last):
+        pivot_value = a_list[first]
+        left = first + 1
+        right = last 
+        done = False
+        
+        while not done:
+            while a_list[left] <= pivot_value and left <= right:
+                left += 1
+            while a_list[right] >= pivot_value and left <= right:
+                right -= 1
+            if left > right:
+                done = True
+            else:
+                temp = a_list[left]
+                a_list[left] = a_list[right]
+                a_list[right] = temp
+        
+        temp = a_list[right]
+        a_list[right] = a_list[first]
+        a_list[first] = temp
+        return right
+    
+    _quick_sort(a_list, 0, len(a_list) - 1)
+    
+    
 if __name__ == '__main__':
     a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
-    shell_sort(a_list)
+    quick_sort(a_list)
     print(a_list)

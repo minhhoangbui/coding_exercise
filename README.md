@@ -25,7 +25,7 @@ Data structures
 ### Trees
 
 - [ ] Binary heap class (binary_heap.py) 
-- [ ] Binary tree class (binary_tree.py) 
+- [x] Binary tree class (binary_tree.py) 
 - [ ] Binary search tree class that allows duplicate values (binary_search_tree.py) 
 	  BST class inherits binary tree class
 - [ ] Red black tree class (red_black_tree.py)
@@ -70,15 +70,15 @@ Algorithms
 - [x] Insertion sort (sort.py)
 - [x] Shell sort (sort.py)
 - [x] Selection sort (sort.py) 
-- [ ] Merge sort (sort.py) 
+- [x] Merge sort (sort.py) 
 - [ ] Heap sort (sort.py) 
-- [ ] Quick sort (sort.py) 
+- [x] Quick sort (sort.py) 
 - [ ] Counting sort (sort.py) 
 - [ ] Radix sort (sort.py)
 - [ ] Bucket sort (sort.py)
 
 ### Dynamic Programming
-- [ ] Computing a Fibonacci sequence
+- [x] Computing a Fibonacci sequence
 - [ ] Find the longest common subsequence between two strings
 
 ### Recursion
@@ -89,7 +89,9 @@ Algorithms
 - [ ] Bucket fill
 - [ ] Check if it's possible to make a change with a set of coins
 - [ ] Check if it's possible to weight two objects with a set of weights
-- [ ] Eight queen
+- [ ] 
+
+
 
 Programming Puzzles
 -------------------
