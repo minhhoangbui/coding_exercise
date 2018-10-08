@@ -23,11 +23,11 @@ def krabsack_with_dp(weights, capacity, n, values):
     assert len(weights) == n
     assert len(values) == n
     temp = [None] * n 
-    temp = [temp] * cap
+    temp = [temp] * capacity
     def _compute_value(n, cap):
         if temp[cap][n] is not None:
             return temp[cap][n]
-        if result == 0 or cap == 0:
+        if n == 0 or cap == 0:
             result = 0
         elif cap < weights[n]:
             result =  _compute_value(n - 1, cap)
