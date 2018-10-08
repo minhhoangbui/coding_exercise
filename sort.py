@@ -4,6 +4,11 @@ Implementation of sorting techniques in Python 2
 from __future__ import print_function
 
 def bubble_sort(a_list):
+    '''
+    Push the biggest element to the end of the list, it is like the bubble rises from the bottom to the top
+    Complexity: O(n)
+    It compares the elements from the start to the next-to-end to its follower and exchanges their position if the superiority exists
+    '''
     for pass_num in range(len(a_list) - 1, 0, -1):
         for i in range(pass_num):
             if a_list[i] > a_list[i + 1]:
@@ -24,10 +29,13 @@ def improved_bubble_sort(a_list):
                 exchanges = True
                 temp = a_list[i]
                 a_list[i] = a_list[i + 1]
-                a_list[i + 1] = a_list[i]
+                a_list[i + 1] = temp
         pass_num -= 1
 
 def selection_sort(a_list):
+    '''
+    For each pass through the list, it will find the index with the biggest value and move them to the end of the sublist in each pass
+    '''
     for slot in range(len(a_list) - 1, 0, -1):
         max_pos = 0
         for loc in range(1, slot + 1):
@@ -38,6 +46,10 @@ def selection_sort(a_list):
         a_list[max_pos] = temp
 
 def insertion_sort(a_list):
+    '''
+    For all elements except the first one, the algo will compare each of them to the their precedences and move the precedeces if necessary
+    It will keep the sorted sublist in the lower position.
+    '''
     for idx in range(1, len(a_list)):
         current_value = a_list[idx]
         position = idx
@@ -77,8 +89,8 @@ def merge_sort(a_list):
         j = 0
         k = 0
 
-        print(left_half)
-        print(right_half)
+        print(left_half, right_half)
+
         while i < len(left_half) and j < len(right_half):
             if left_half[i] < right_half[j]:
                 a_list[k] = left_half[i]
@@ -137,5 +149,5 @@ def quick_sort(a_list):
     
 if __name__ == '__main__':
     a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
-    quick_sort(a_list)
+    merge_sort(a_list)
     print(a_list)

@@ -2,26 +2,41 @@
 Some applications of recursion in programming
 '''
 from __future__ import print_function
-import turtle
-def tree(branch_len, t):
-    if branch_len > 5:
-        t.forward(branch_len)
-        t.right(20)
-        tree(branch_len - 15, t)
-        t.left(40)
-        tree(branch_len - 15, t)
-        t.right(20)
-        t.backward(branch_len)
+import copy
 
-def main():
-    t = turtle.Turtle()
-    my_win = turtle.Screen()
-    t.left(90)
-    t.up()
-    t.backward(100)
-    t.down()
-    t.color("green")
-    tree(200, t)
-    my_win.exitonclick()
+def permuteString(string):
+    def permuteHelper(string, chosen):
+        if string == []:
+            tmp = ''.join(chosen)
+            if tmp not in output:
+                output.append(tmp)
+            
+            # tmp = copy.copy(chosen)
+            # if tmp not in output:
+            #     output.append(chosen)
+        else:
+            for i in range(len(string)):
+                # choose
+                chosen.append(string[i])
+                string.pop(i)
 
-main()
+                #explore
+                permuteHelper(string, chosen)
+
+                # un-choose
+                char = chosen.pop() 
+                string.insert(i, char)
+                
+    string = list(string)
+    chosen = []
+    output = []
+    permuteHelper(string, chosen)
+    return output
+    
+
+if __name__ == '__main__':
+    print(permuteString('aab'))
+
+
+
+

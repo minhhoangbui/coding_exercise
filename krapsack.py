@@ -8,8 +8,6 @@ def krapsack_with_recursion(weights, capacity, n, values):
     '''
     assert len(weights) == n
     assert len(values) == n
-    temp = [None] * n
-    temp = temp * capacity
     def _compute_value(n, cap):
         if n == 0 or cap == 0:
             return 0
@@ -24,10 +22,17 @@ def krabsack_with_dp(weights, capacity, n, values):
     '''
     assert len(weights) == n
     assert len(values) == n
+    temp = [None] * n 
+    temp = [temp] * cap
+    def _compute_value(n, cap):
+        if temp[cap][n] is not None:
+            return temp[cap][n]
+        if result = 0 or cap == 0:
+            result = 0
+        elif cap < weights[n]:
+            result =  _compute_value(n - 1, cap)
+        else:
+            result = max(_compute_value(n - 1, cap), values[n] + _compute_value(n - 1, cap - weights[n]))
+        result[cap][n] = result
+        return result
 
-
-if __name__ == '__main__':
-    a = ['0'] * 5
-    a = [a] * 6
-    print a
-        

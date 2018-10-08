@@ -83,20 +83,22 @@ Algorithms
 
 ### Recursion
 
-- [ ] Find all permutations of a string
-- [ ] Find all subsets of a set
+- [x] Find all permutations of a string
+- [x] Find all subsets of a set
 - [ ] Find all proper combinations of n parentheses
 - [ ] Bucket fill
 - [ ] Check if it's possible to make a change with a set of coins
 - [ ] Check if it's possible to weight two objects with a set of weights
-- [ ] 
-
+- [ ] Eight queen
+- [x] Krap sack
+- [x] Minimum coin changing
 
 
 Programming Puzzles
 -------------------
 
 ### String Manipulation
+
 - [ ] Check if two strings are anagrams in O(n + m) time (anagrams.py) 
 - [ ] Find the longest palindromic substring in O(n^2) time (lc_longest_palindrome.py)
 - [x] Check if a string has balanced delimiters in O(n) time (stack_algos.py)
@@ -108,6 +110,7 @@ Programming Puzzles
 - [ ] Check if a string is a rotation of another
 
 ### Mathematical
+
 - [ ] Reverse integers (lc_reverse_int.py)
 - [ ] Sieve of Eratosthenes (sieve_prime.py)
 - [ ] Two sum in O(n) time (lc_two_sum.py)
