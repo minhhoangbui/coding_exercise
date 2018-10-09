@@ -89,7 +89,7 @@ Algorithms
 - [ ] Bucket fill
 - [ ] Check if it's possible to make a change with a set of coins
 - [ ] Check if it's possible to weight two objects with a set of weights
-- [ ] Eight queen
+- [x] Eight queen
 - [x] Krap sack
 - [x] Minimum coin changing
 

@@ -32,10 +32,35 @@ def permuteString(string):
     output = []
     permuteHelper(string, chosen)
     return output
-    
 
+def solveNQueen(n):
+
+    def _check(position, queen):
+        for pos in position:
+            if pos[0] == queen[0] or pos[1] == queen[1] or \
+                sum(pos) == sum(queen) or pos[1] - pos[0] == queen[1] - queen[0]:
+                return False
+        return True
+
+    def solverHelper(position, row):
+        if row == n:
+            print(position)
+            position.pop()
+        else:
+            for col in range(n):
+                queen = [row, col]
+                if _check(position, queen):
+                    position.append(queen)
+                    solverHelper(position, row + 1)
+            # print(position)
+            if position != []:
+                position.pop()
+    if n < 4:
+        raise ValueError('There will be no placement for that number')
+    solverHelper([], 0)
+            
 if __name__ == '__main__':
-    print(permuteString('aab'))
+    solveNQueen(5)
 
 
 
