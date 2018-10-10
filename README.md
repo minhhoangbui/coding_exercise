@@ -105,25 +105,25 @@ Programming Puzzles
 - [ ] Reverse words while maintaining spaces and tabs in O(n) time (reverse_words.py)
 - [ ] Longest substring without repeating characters in O(n) time (lc_longest_nonrepeat_substring.py) 
 - [ ] Longest contiguous substring of 2 distinct characters in O(n) time (substring_two_chars.py)
-- [ ] Remove duplicate chars in a string
+- [x] Remove duplicate chars in a string
 - [ ] Encode and decode Caesar cipher (caesar.py)
 - [ ] Check if a string is a rotation of another
 
 ### Mathematical
 
-- [ ] Reverse integers (lc_reverse_int.py)
-- [ ] Sieve of Eratosthenes (sieve_prime.py)
-- [ ] Two sum in O(n) time (lc_two_sum.py)
+- [x] Reverse integers (lc_reverse_int.py)
+- [x] Sieve of Eratosthenes (sieve_prime.py)
+- [x] Two sum in O(n) time (lc_two_sum.py)
 	  Given an array of integers, return indices of the two numbers 
 	  such that they add up to a specific target.
-- [ ] Year with maximum population (year_max_pop.py)
+- [x] Year with maximum population (year_max_pop.py)
 	  Given a list of people with their years of birth and death, 
 	  find the year with max population
-- [ ] FizzBuzz (fizzbuzz.py)
+- [x] FizzBuzz (fizzbuzz.py)
 - [ ] ZigZag conversion (lc_zigzag_convert.py)
 - [ ] Find sum of all subarrays of an array (subarray_sum.py)
 - [ ] Add two numbers, each represented by a reverse linked list (lc_add_number_reverse.py)
 - [ ] Find the median of two sorted arrays in O(log(m+n)) time (lc_median_arrays.py)
 - [ ] Find nth smallest number that can be created using a list of prime factors
-- [ ] Count occurences of given digit in all numbers up to n
+- [x] Count occurences of given digit in all numbers up to n
 - [ ] Rotate N x N matrix in place
