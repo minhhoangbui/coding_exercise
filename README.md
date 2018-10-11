@@ -76,6 +76,7 @@ Algorithms
 - [ ] Counting sort (sort.py) 
 - [ ] Radix sort (sort.py)
 - [ ] Bucket sort (sort.py)
+- [x] Merge_sorted_list (lc_merge_sorted.py)
 
 ### Dynamic Programming
 - [x] Computing a Fibonacci sequence
