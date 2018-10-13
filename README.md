@@ -88,7 +88,7 @@ Algorithms
 - [x] Find all subsets of a set
 - [ ] Find all proper combinations of n parentheses
 - [ ] Bucket fill
-- [ ] Check if it's possible to make a change with a set of coins
+- [x] Check if it's possible to make a change with a set of coins
 - [ ] Check if it's possible to weight two objects with a set of weights
 - [x] Eight queen
 - [x] Krap sack

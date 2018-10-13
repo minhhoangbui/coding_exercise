@@ -59,24 +59,49 @@ def solveNQueen(n):
         raise ValueError('There will be no placement for that number')
     solverHelper([], 0)
 
-def find_min_sum_path(mat):
+def find_min_matrix_sum(mat):
+    '''Given a matrix with values, find a way going from the top-left to the bottom-right with the lowest cost'''
     if len(mat) == 1 and len(mat[0]) == 1:
         return mat[0][0]
     elif len(mat) == 1:
         mat1 = [lst[1:] for lst in mat]
-        return mat[0][0] + find_min_sum_path(mat1)
+        return mat[0][0] + find_min_matrix_sum(mat1)
     elif len(mat[0]) == 1:
         mat2 = mat[1:]
-        return mat[0][0] + find_min_sum_path(mat2)
+        return mat[0][0] + find_min_matrix_sum(mat2)
     else:
         mat1 = [lst[1:] for lst in mat]
         mat2 = mat[1:]
-        return mat[0][0] + min(find_min_sum_path(mat1),
-                    find_min_sum_path(mat2))
+        return mat[0][0] + min(find_min_matrix_sum(mat1),
+                    find_min_matrix_sum(mat2))
+
+def rob_house(alist):
+    '''House Robber problem from LeetCode'''
+    if len(alist) == 0:
+        return 0
+    elif len(alist) == 1:
+        return alist[0]
+    else:
+        return max(alist[0] + rob_house(alist[2:]), rob_house(alist[1:]))
+
+def rob_house_2(alist):
+    '''House Robber II from LeetCode'''
+
+    temp1 = rob_house(alist[:len(alist) - 1])
+    temp2 = rob_house(alist[1:])
+    return max(temp1, temp2)
+
+def find_min_triangle_sum(triangle):
+    '''Solve Triangle problem from LeetCode'''
+    def _compute_sum(i, j):
+        if j == len(triangle):
+            return 0
+        else:
+            return triangle[j][i] + min(_compute_sum(i, j + 1), _compute_sum(i + 1, j + 1))
+    return _compute_sum(0, 0)
 
 if __name__ == '__main__':
-    mat = [[1, 3, 1], [1, 5, 1], [4, 2, 1]]
-    print(find_min_sum_path(mat))
+    print(rob_house_2([1, 2, 3, 1]))
 
 
 

@@ -146,8 +146,25 @@ def quick_sort(a_list):
     
     _quick_sort(a_list, 0, len(a_list) - 1)
     
+def counting_sort(a_list):
+    a_min = min(a_list)
+    a_max = max(a_list)
+    ranges = list(range(a_min, a_max + 1))
+    occurence = []
+    pos = []
+    result = [None] * len(a_list)
+    for element in ranges:
+        occurence.append(a_list.count(element))
+    for idx, val in enumerate(occurence):
+        pos.append(sum(occurence[:idx+1]))
+    pos.insert(0, 0)
+    pos = pos[:len(ranges)]
+    for i, j in zip(pos, ranges):
+        result[i:] = [j] * (len(a_list) - i)
+    print(result)
+
     
+
 if __name__ == '__main__':
-    a_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
-    merge_sort(a_list)
-    print(a_list)
+    a_list = [1, 0, 3, 1, 3, 1]
+    counting_sort(a_list)
