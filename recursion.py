@@ -58,9 +58,25 @@ def solveNQueen(n):
     if n < 4:
         raise ValueError('There will be no placement for that number')
     solverHelper([], 0)
-            
+
+def find_min_sum_path(mat):
+    if len(mat) == 1 and len(mat[0]) == 1:
+        return mat[0][0]
+    elif len(mat) == 1:
+        mat1 = [lst[1:] for lst in mat]
+        return mat[0][0] + find_min_sum_path(mat1)
+    elif len(mat[0]) == 1:
+        mat2 = mat[1:]
+        return mat[0][0] + find_min_sum_path(mat2)
+    else:
+        mat1 = [lst[1:] for lst in mat]
+        mat2 = mat[1:]
+        return mat[0][0] + min(find_min_sum_path(mat1),
+                    find_min_sum_path(mat2))
+
 if __name__ == '__main__':
-    solveNQueen(5)
+    mat = [[1, 3, 1], [1, 5, 1], [4, 2, 1]]
+    print(find_min_sum_path(mat))
 
 
 
