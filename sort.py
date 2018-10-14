@@ -2,6 +2,7 @@
 Implementation of sorting techniques in Python 2
 '''
 from __future__ import print_function
+import copy
 
 def bubble_sort(a_list):
     '''
@@ -155,16 +156,35 @@ def counting_sort(a_list):
     result = [None] * len(a_list)
     for element in ranges:
         occurence.append(a_list.count(element))
-    for idx, val in enumerate(occurence):
+    for idx, _ in enumerate(occurence):
         pos.append(sum(occurence[:idx+1]))
     pos.insert(0, 0)
     pos = pos[:len(ranges)]
     for i, j in zip(pos, ranges):
         result[i:] = [j] * (len(a_list) - i)
-    print(result)
+    return result, pos, ranges
 
-    
+def radix_sort(a_list):
+    max_num_digit = len(list(str(max(a_list))))
+    a_list = [list(str(num)) for num in a_list]
+    for num in a_list:
+        while len(num) < max_num_digit:
+            num.insert(0, '0')
+    a_list = [[int(digit) for digit in num] for num in a_list]
+    result = [None] * len(a_list)
+    i = max_num_digit - 1
+    while i >= 0:
+        temp = [lst[i] for lst in a_list]
+        _, pos, ranges = counting_sort(temp)
+        for m, n in zip(pos, ranges):
+            for p in a_list:
+                if n == p[i]:
+                    result[m:] = [p] * (len(a_list) - m)
+                    m += 1
+        a_list = copy.copy(result)
+        i -= 1
+    return a_list
 
 if __name__ == '__main__':
-    a_list = [1, 0, 3, 1, 3, 1]
-    counting_sort(a_list)
+    a_list = [53, 89, 150, 36, 633, 233]
+    print(radix_sort(a_list))

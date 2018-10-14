@@ -5,6 +5,7 @@ from __future__ import print_function
 import copy
 
 def permuteString(string):
+    '''Print out every permutation of a given string'''
     def permuteHelper(string, chosen):
         if string == []:
             tmp = ''.join(chosen)
@@ -34,7 +35,8 @@ def permuteString(string):
     return output
 
 def solveNQueen(n):
-
+    ''' Given an integer n, place n queens on the chess-board n*n with condition that 
+    each queen stays safe from the other'''
     def _check(position, queen):
         for pos in position:
             if pos[0] == queen[0] or pos[1] == queen[1] or \
@@ -100,8 +102,37 @@ def find_min_triangle_sum(triangle):
             return triangle[j][i] + min(_compute_sum(i, j + 1), _compute_sum(i + 1, j + 1))
     return _compute_sum(0, 0)
 
+def findGrayCode(n):
+    def _binary_to_decimal(code):
+        code.reverse()
+        dec = 0
+        for i, v in enumerate(code):
+            dec += v * 2 ** i
+        return dec
+
+    def _generate(code):
+        result = []
+        for i in range(len(code)):
+            temp = copy.copy(code)
+            temp[i] = int(not(temp[i]))
+            result.append(temp)
+        return result
+    
+    def _helper(codes):
+        if len(codes) == 2 ** n:
+            output = [_binary_to_decimal(code) for code in codes]
+            print(output)
+            codes.pop()
+        else:
+            for i in _generate(codes[-1]):
+                if i not in codes:
+                    codes.append(i)
+                    _helper(codes)
+            codes.pop()
+    codes = [[0] * n]
+    _helper(codes)
 if __name__ == '__main__':
-    print(rob_house_2([1, 2, 3, 1]))
+    findGrayCode(3)
 
 
 

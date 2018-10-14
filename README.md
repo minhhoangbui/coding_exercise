@@ -18,7 +18,7 @@ Data structures
 - [x] List class (linked_list.py) - 1
 - [x] Remove duplicates (linked_list_algos.py)
 - [ ] Find nth last element (linked_list_algos.py)
-- [ ] Remove node given only its object (linked_list_algos.py)
+- [x] Remove node given only its object (linked_list_algos.py)
 - [ ] Sum linked lists with one digit per node (linked_list_algos.py)
 - [ ] Find beginning of circle (linked_list_algos.py)
 
@@ -73,7 +73,7 @@ Algorithms
 - [x] Merge sort (sort.py) 
 - [ ] Heap sort (sort.py) 
 - [x] Quick sort (sort.py) 
-- [ ] Counting sort (sort.py) 
+- [x] Counting sort (sort.py) 
 - [ ] Radix sort (sort.py)
 - [ ] Bucket sort (sort.py)
 - [x] Merge_sorted_list (lc_merge_sorted.py)
