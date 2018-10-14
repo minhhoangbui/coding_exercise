@@ -120,7 +120,8 @@ def findGrayCode(n):
     
     def _helper(codes):
         if len(codes) == 2 ** n:
-            output = [_binary_to_decimal(code) for code in codes]
+            output = copy.copy(codes)
+            # output = [_binary_to_decimal(code) for code in output]
             print(output)
             codes.pop()
         else:
@@ -129,10 +130,11 @@ def findGrayCode(n):
                     codes.append(i)
                     _helper(codes)
             codes.pop()
+
     codes = [[0] * n]
     _helper(codes)
 if __name__ == '__main__':
-    findGrayCode(3)
+    findGrayCode(2)
 
 
 
