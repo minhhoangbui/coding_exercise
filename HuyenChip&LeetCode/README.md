@@ -74,7 +74,7 @@ Algorithms
 - [ ] Heap sort (sort.py) 
 - [x] Quick sort (sort.py) 
 - [x] Counting sort (sort.py) 
-- [ ] Radix sort (sort.py)
+- [x] Radix sort (sort.py)
 - [ ] Bucket sort (sort.py)
 - [x] Merge_sorted_list (lc_merge_sorted.py)
 
