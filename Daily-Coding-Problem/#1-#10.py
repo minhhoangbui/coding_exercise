@@ -2,6 +2,8 @@
 import copy
 from operator import mul
 
+
+
 def prob_1(nums, target):
     '''
     Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
@@ -32,7 +34,64 @@ def prob_2(a_list):
         output.append(reduce(mul, temp))
     return output
 
-if __name__ == '__main__':
-    nums = [3, 2, 1]
+def prob_3():
+    '''
+    Given the root to a binary tree, implement serialize(root), which serializes the tree into a string, and deserialize(s), which deserializes 
+    the string back into the tree.
 
-    print prob_2(nums)
+    For example, given the following Node class
+
+    class Node:
+        def __init__(self, val, left=None, right=None):
+            self.val = val
+            self.left = left
+            self.right = right
+    The following test should pass:
+
+    node = Node('root', Node('left', Node('left.left')), Node('right'))
+    assert deserialize(serialize(node)).left.left.val == 'left.left'
+    '''
+
+    class Node:
+        def __init__(self, val, left=None, right=None):
+            self.root = val
+            self.left = left
+            self.right = right
+        
+        def get_children(self):
+            return [self.left, self.right]
+
+    def serialize(node):
+        array = []
+        def encode(node):
+            array.append(node.root)
+            if node.get_children() != [None, None]:
+                for child in node.get_children():
+                    if child is not None:
+                        encode(child)
+                    else:
+                        array.append('#')
+        encode(node)
+        return ' '.join(array)
+
+    def deserialize(string):
+        def decode(array):
+            if array:
+                val = array.pop(0)
+                if val == '#':
+                    return None
+                node = Node(val)
+                node.left = decode(array)
+                node.right = decode(array)
+                return node
+        
+        array = string.split(' ')
+        return decode(array)
+    
+    node = Node('root', Node('left', Node('left.left')), Node('right'))
+    string = serialize(node)
+    assert deserialize(string).left.left.root == 'left.left'
+
+if __name__ == '__main__':
+    prob_3()
+
