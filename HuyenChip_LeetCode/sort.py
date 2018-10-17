@@ -185,6 +185,19 @@ def radix_sort(a_list):
         i -= 1
     return a_list
 
+def bucket_sort(a_list, n_bucket):
+    temp = []
+    output = []
+    for _ in range(n_bucket):
+        temp.append([])
+    for i in a_list:
+        temp[(i * n_bucket) / 1000].append(i)
+    for tmp in temp:
+        if tmp != []:
+            merge_sort(tmp)
+            output += tmp
+    return output
+
 if __name__ == '__main__':
     a_list = [53, 89, 150, 36, 633, 233]
-    print(radix_sort(a_list))
+    print(bucket_sort(a_list, 10))
