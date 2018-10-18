@@ -102,7 +102,7 @@ def find_min_triangle_sum(triangle):
             return triangle[j][i] + min(_compute_sum(i, j + 1), _compute_sum(i + 1, j + 1))
     return _compute_sum(0, 0)
 
-def findGrayCode(n):
+def findGrayCode_lc(n):
     def _binary_to_decimal(code):
         code.reverse()
         dec = 0
@@ -133,8 +133,9 @@ def findGrayCode(n):
 
     codes = [[0] * n]
     _helper(codes)
+    
 if __name__ == '__main__':
-    findGrayCode(2)
+    findGrayCode_lc(2)
 
 
 
