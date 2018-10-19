@@ -68,5 +68,21 @@ def combination_sum_2(a_list, target):
     _helper(a_list, target)
     print output
 
+def combination_sum_3(target, k0):
+    chosen = []
+    def _helper(n, k):
+        if n == 0 and k == 0:
+            print chosen
+        elif n != 0 and k == 0:
+            pass
+        elif n < 0:
+            pass
+        else:
+            for i in range(1, 10):
+                chosen.append(i)
+                _helper(n - i, k - 1)
+                chosen.pop()
+    _helper(target, k0)
+
 if __name__ == '__main__':
-    combination_sum_2([2,5,2,1,2], 5)
+    combination_sum_3(7, 3)
