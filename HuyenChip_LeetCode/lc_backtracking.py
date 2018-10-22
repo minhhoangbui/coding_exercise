@@ -4,7 +4,24 @@ import copy
 from sort import selection_sort
 
 def subset(a_list):
-    pass
+    def _helper(a_list, chosen, output):
+        if len(a_list) == 0:
+            pass
+        else:
+            for i in range(len(a_list)):
+                temp_list = list(a_list[i:])
+                temp = temp_list.pop(0)
+                chosen.append(temp)
+                if chosen not in output:
+                    tmp = list(chosen)
+                    output.append(tmp)
+                _helper(temp_list, chosen, output)
+                chosen.pop()
+    chosen = []
+    output = []
+    _helper(a_list, chosen, output)
+    output.append([])
+    print output
 
 def combination_sum(a_list, target):
     chosen = []
@@ -69,20 +86,24 @@ def combination_sum_2(a_list, target):
     print output
 
 def combination_sum_3(target, k0):
-    chosen = []
-    def _helper(n, k):
-        if n == 0 and k == 0:
+    
+    def _helper(a_list, chosen):
+        if sum(chosen) == target and len(chosen) == k0:
             print chosen
-        elif n != 0 and k == 0:
+        elif sum(chosen) != target and len(chosen) == k0:
             pass
-        elif n < 0:
+        elif sum(chosen) > target:
             pass
         else:
-            for i in range(1, 10):
-                chosen.append(i)
-                _helper(n - i, k - 1)
+            for i in range(len(a_list)):
+                temp_list = list(a_list[i:])
+                temp = temp_list.pop(0)
+                chosen.append(temp)
+                _helper(temp_list, chosen)
                 chosen.pop()
-    _helper(target, k0)
+    a_list = list(range(1, 10))
+
+    _helper(a_list, [])
 
 if __name__ == '__main__':
-    combination_sum_3(7, 3)
+    subset([1, 2, 3])
