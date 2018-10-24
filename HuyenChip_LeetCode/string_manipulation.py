@@ -1,25 +1,35 @@
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 
 def removeDuplicateChar(string):
     return ''.join(list(set(list(string))))
 
-def ceasar_encrypt(string, key):
-    code = []
-    for char in string:
-        tmp = ord(char)
-        if tmp == 32:
-            code.append(char)
-        elif tmp <= 127 - key:
-            print(chr(tmp + key))
-            code.append(chr(tmp + key))
-        else:
-            code.append(chr((tmp + key + 33) % 128))
-    return ''.join(code)
-
-def ceasar_decrypt(string, key):
-    code = []
-    for char in string:
-        pass
+class CeasarCipher:
+    def __init__(self, shift):
+        encoder = [None] * 26
+        decoder = [None] * 26
+        for i in range(26):
+            encoder[i] = chr((i + shift) % 26 + ord('A'))
+            decoder[i] = chr((i - shift) % 26 + ord('A'))
+        self._forward = ''.join(encoder)
+        self._backward = ''.join(decoder)
+    
+    def encrypt(self, message):
+        return self._transform(message, self._forward)
+    
+    def decrypt(self, message):
+        return self._transform(message, self._backward)
+    
+    @staticmethod
+    def _transform(message, code):
+        msg = list(message)
+        output = list(message)
+        for i in range(len(msg)):
+            if msg[i].isupper():
+                j = ord(msg[i]) - ord('A')
+                output[i] = code[j]
+        return ''.join(output)
         
 if __name__ == '__main__':
-    print(ceasar_encrypt('The sky', 13))
+    cipher = CeasarCipher(3)
+    print(cipher.decrypt('WKH HDJOH LV LQ SODB; PHHW DW MRH’V.'))

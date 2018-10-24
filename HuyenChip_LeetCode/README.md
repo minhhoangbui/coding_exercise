@@ -107,7 +107,7 @@ Programming Puzzles
 - [ ] Longest substring without repeating characters in O(n) time (lc_longest_nonrepeat_substring.py) 
 - [ ] Longest contiguous substring of 2 distinct characters in O(n) time (substring_two_chars.py)
 - [x] Remove duplicate chars in a string
-- [ ] Encode and decode Caesar cipher (caesar.py)
+- [x] Encode and decode Caesar cipher (caesar.py)
 - [ ] Check if a string is a rotation of another
 
 ### Mathematical
