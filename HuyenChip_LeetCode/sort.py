@@ -117,12 +117,12 @@ def quick_sort(a_list):
     
     def _quick_sort(a_list, first, last):
         if first <  last:
-            split_point = partition(a_list, first, last)
+            split_point = _partition(a_list, first, last)
 
             _quick_sort(a_list, first, split_point - 1)
             _quick_sort(a_list, split_point + 1, last)
     
-    def partition(a_list, first, last):
+    def _partition(a_list, first, last):
         pivot_value = a_list[first]
         left = first + 1
         right = last 
@@ -140,9 +140,9 @@ def quick_sort(a_list):
                 a_list[left] = a_list[right]
                 a_list[right] = temp
         
-        temp = a_list[right]
-        a_list[right] = a_list[first]
-        a_list[first] = temp
+        temp = a_list[first]
+        a_list[first] = a_list[right]
+        a_list[right] = temp
         return right
     
     _quick_sort(a_list, 0, len(a_list) - 1)
@@ -198,6 +198,6 @@ def bucket_sort(a_list, n_bucket):
             output += tmp
     return output
 
+
 if __name__ == '__main__':
-    a_list = [53, 89, 150, 36, 633, 233]
-    print(bucket_sort(a_list, 10))
+    quick_sort([2, 8, 3, 6])

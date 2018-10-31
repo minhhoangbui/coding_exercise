@@ -1,4 +1,4 @@
-'Solve Daily Coding Problems from #1-#10'
+'''Solve Daily Coding Problems from #1-#10'''
 import copy
 from operator import mul
 
@@ -131,6 +131,40 @@ def prob_5():
     assert car(cons(3, 4)) == 3
     assert cdr(cons(3, 4)) == 4
 
+def prob_7(message):
+    '''
+    Given the mapping a = 1, b = 2, ... z = 26, and an encoded message, count the number of ways it can be decoded.
+
+    For example, the message '111' would give 3, since it could be decoded as 'aaa', 'ka', and 'ak'.
+
+    You can assume that the messages are decodable. For example, '001' is not allowed.
+    '''
+    letter_dict = {k + 1: chr(k + 97) for k in range(26)} 
+
+    def _helper(a_list, chosen):
+        if not a_list:
+            out = list(chosen)
+            out = [''. join(i) for i in out]
+            out = [letter_dict[int(i)] for i in out]
+            print(''.join(out))
+        else:
+            temp1 = a_list[0]
+            temp_lst1 = list(a_list[1:])
+            chosen.append(temp1)
+            _helper(temp_lst1, chosen)
+            chosen.pop()
+            if len(a_list) >= 2:
+                temp2 = a_list[0: 2]
+                if int(''.join(temp2)) <= 26:
+                    temp_lst2 = list(a_list[2:])
+                    chosen.append(temp2)
+                    _helper(temp_lst2, chosen)
+                    chosen.pop()
+    
+    a_list = list(message)
+    chosen = []
+       
+    _helper(a_list, chosen)
 
 def prob_9(a_list):
     '''
@@ -147,5 +181,5 @@ def prob_9(a_list):
     return max(temp1, temp2)
 
 if __name__ == '__main__':
-    print prob_9([5, 1, 1, 5])
+    prob_7('111')
 
