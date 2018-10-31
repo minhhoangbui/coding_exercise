@@ -129,7 +129,7 @@ def quick_sort(a_list):
         done = False
         
         while not done:
-            while a_list[left] <= pivot_value and left <= right:
+            while left <= right and a_list[left] <= pivot_value:
                 left += 1
             while a_list[right] >= pivot_value and left <= right:
                 right -= 1
