@@ -1,9 +1,23 @@
 '''Solve Daily Coding Problems from #11-#20'''
 
+def prob_11(prefix, word_list):
+    '''
+    Implement an autocomplete system. That is, given a query string s and a set of all possible query strings, return all s
+    trings in the set that have s as a prefix.
+
+    For example, given the query string de and the set of strings [dog, deer, deal], return [deer, deal].
+    '''
+
+    import re
+    regex = prefix + '\w+'
+    regex = re.compile(regex, flags=re.UNICODE)
+    result = [string for string in word_list if bool(regex.search(string))]
+    return result
+
 def prob_12(N, choices):
     '''
-    There exists a staircase with N steps, and you can climb up either 1 or 2 steps at a time. Given N, write a function that returns 
-    the number of unique ways you can climb the staircase. The order of the steps matters.
+    There exists a staircase with N steps, and you can climb up either 1 or 2 steps at a time. Given N, write a function 
+    that returns the number of unique ways you can climb the staircase. The order of the steps matters.
 
     For example, if N is 4, then there are 5 unique ways:
 
@@ -61,4 +75,4 @@ def prob_13(string, k0):
     return ''.join(max_string)
 
 if __name__ == '__main__':
-    print(prob_13('abcba', 2))
+    print(prob_11('de', ['dog', 'deer', 'deal']))
