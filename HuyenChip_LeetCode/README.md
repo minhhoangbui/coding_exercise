@@ -11,6 +11,7 @@ If a file name starts with 'lc', it's a problem from leetcode.com
 Written in python2.
 
 Data structures
+
 ---------------
 
 ### Linked lists
@@ -24,7 +25,7 @@ Data structures
 
 ### Trees
 
-- [ ] Binary heap class (binary_heap.py) 
+- [ ] Binary heap class (binary_heap.py)
 - [x] Binary tree class (binary_tree.py) 
 - [ ] Binary search tree class that allows duplicate values (binary_search_tree.py) 
 	  BST class inherits binary tree class
@@ -58,12 +59,15 @@ Data structures
 - [ ] Build a queue using two stacks (stack_algos.py)
 
 ### Hashing
+
 - [ ] Hash table class
 
 Algorithms
+
 ----------
 
 ### Sorting and Searching
+
 - [x] Binary search (search.py)
 - [x] Sequential search (search.py)
 - [x] Bubble sort (sort.py)
@@ -71,14 +75,15 @@ Algorithms
 - [x] Shell sort (sort.py)
 - [x] Selection sort (sort.py) 
 - [x] Merge sort (sort.py) 
-- [ ] Heap sort (sort.py) 
+- [ ] Heap sort (sort.py)
 - [x] Quick sort (sort.py) 
 - [x] Counting sort (sort.py) 
 - [x] Radix sort (sort.py)
-- [ ] Bucket sort (sort.py)
+- [x] Bucket sort (sort.py)
 - [x] Merge_sorted_list (lc_merge_sorted.py)
 
 ### Dynamic Programming
+
 - [x] Computing a Fibonacci sequence
 - [ ] Find the longest common subsequence between two strings
 

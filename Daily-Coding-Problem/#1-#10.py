@@ -166,6 +166,23 @@ def prob_7(message):
        
     _helper(a_list, chosen)
 
+def prob_8():
+    '''
+    A unival tree (which stands for "universal value") is a tree where all nodes under it have the same value.
+
+    Given the root to a binary tree, count the number of unival subtrees.
+
+    For example, the following tree has 5 unival subtrees:
+
+         0
+        / \
+       1   0
+          / \
+         1   0
+        / \
+       1   1
+    '''
+
 def prob_9(a_list):
     '''
     Given a list of integers, write a function that returns the largest sum of non-adjacent numbers. Numbers can be 0 or negative.
@@ -180,6 +197,22 @@ def prob_9(a_list):
     temp2 = prob_9(a_list[1:])
     return max(temp1, temp2)
 
+def prob_10(n):
+    '''
+    Implement a job scheduler which takes in a function f and an integer n, and calls f after n milliseconds.
+    '''
+    def _print():
+        print('mhoangbui')
+
+    start = 0
+    import time
+
+    while True:
+        while time.time() - start < n:
+            pass
+        _print()
+        start = time.time()
+
 if __name__ == '__main__':
-    prob_7('111')
+    prob_10(2)
 

@@ -29,7 +29,13 @@ class CeasarCipher:
                 j = ord(msg[i]) - ord('A')
                 output[i] = code[j]
         return ''.join(output)
-        
+
+def reverse_words(string):
+    string = list(string)
+    reversed_str = []
+    while string:
+        reversed_str.append(string.pop())
+    return ''.join(reversed_str)
+
 if __name__ == '__main__':
-    cipher = CeasarCipher(3)
-    print(cipher.decrypt('WKH HDJOH LV LQ SODB; PHHW DW MRH’V.'))
+    print(reverse_words('I love you'))
