@@ -213,6 +213,28 @@ def prob_10(n):
         _print()
         start = time.time()
 
+def prob_31(string1, string2):
+
+    if len(string1) > len(string2):
+        string1, string2 = string2, string1
+    
+    distances = range(len(string2) + 1)
+    for i2, c2 in enumerate(string2):
+        distances_ = [i2 + 1]
+        for i1, c1 in enumerate(string1):
+            if c1 == c2:
+                distances_.append(distances[i1])
+            else:
+                distances_.append(1 + min(distances[i1], distances[i1 + 1], distances_[-1]))
+        distances = distances_
+    return distances[-1]
+
+def prob_37(a_list):
+    def _helper(output):
+        if len(output):
+            print(output)
+        else:
+            
 if __name__ == '__main__':
     prob_10(2)
 
