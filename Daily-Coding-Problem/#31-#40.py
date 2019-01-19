@@ -80,8 +80,20 @@ def prob_37(a_list):
     For example, given the set {1, 2, 3}, it should return 
     {{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}}.
     '''
-    pass
-
+    
+    def _helper(subset, a_list, idx):
+        if idx == len(a_list):
+            output = [e for e in subset if e is not None]
+            print output
+        else:
+            subset[idx] = None
+            _helper(subset, a_list, idx + 1)
+            subset[idx] = a_list[idx]
+            _helper(subset, a_list, idx + 1)
+    
+    subset = [None, ] * len(a_list)
+    _helper(subset, a_list, 0)
+    
 def prob_38(N):
     '''
     You have an N by N board. Write a function that, given N, returns the number of possible arrangements of 
@@ -130,4 +142,4 @@ def prob_40(a_list):
     return output[0]
 
 if __name__ == '__main__':
-    print prob_31('sunday', 'saturday')
+    prob_37([1, 2, 3])
