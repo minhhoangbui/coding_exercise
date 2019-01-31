@@ -1,5 +1,73 @@
 '''Solve Daily Coding Problems from #21-#30'''
 
+class Node(object):
+    def __init__(self, value=None, next_node=None):
+        self._value = value
+        self._next = next_node
+    
+    def get_value(self):
+        return self._value
+    
+    def get_next(self):
+        return self._next
+    
+    def set_next(self, node):
+        self._next = node
+
+class SinglyLinkedList(object):
+
+    def __init__(self, node):
+        self._head = node
+        self.size = 1
+    
+    def __len__(self):
+        return self.size
+    
+    def insert_head(self, value):
+        new_node = Node(value, self._head)
+        self._head = new_node
+        self.size += 1
+    
+    def remove_head(self):
+        self._head = self._head.get_next()
+        self.size -= 1
+    
+    def get_head(self):
+        return self._head._value
+    
+    def remove_nth_node(self, nth):
+        if nth == len(self):
+            current = self._head.get_next()
+            for _ in xrange(nth - 3):
+                current = current.get_next()
+            current.set_next(None)
+            self.size -= 1
+        elif nth == 1:
+            self.remove_head()
+        else:
+            before_nth = self._head.get_next()
+            for _ in xrange(nth - 3):
+                before_nth = before_nth.get_next()
+            nth = before_nth.get_next()
+            after_nth = nth.get_next()
+            before_nth.set_next(after_nth)
+            self.size -= 1
+    
+    def print_list(self):
+        current = self._head
+        while current:
+            print(current._value)
+            current = current.get_next()
+
+def prob_21(a_list):
+    '''
+    Given an array of time intervals (start, end) for classroom lectures (possibly overlapping), 
+    find the minimum number of rooms required.
+
+    For example, given [(30, 75), (0, 50), (60, 150)], you should return 2.
+    '''
+    pass
+    
 def prob_22(string, tokens):
     '''
     Given a dictionary of words and a string made up of those words (no spaces), return the original sentence 
@@ -41,6 +109,19 @@ def prob_25(string, regex_pattern):
     regex_pattern = re.compile(regex_pattern)
     result = regex_pattern.search(string).group()
     return result == string
+
+def prob_26(linked_list, k):
+    '''
+    Given a singly linked list and an integer k, remove the kth last element from the list. k is guaranteed 
+    to be smaller than the length of the list.
+
+    The list is very long, so making more than one pass is prohibitively expensive.
+
+    Do this in constant space and in one pass.
+    '''
+    size = len(linked_list)
+    linked_list.remove_nth_node(size + 1 - k)
+    return linked_list
 
 def prob_27(string):
     '''
@@ -171,4 +252,11 @@ def prob_30(array):
     pass
 
 if __name__ == '__main__':
-    prob_29("AAAABBBCCDAA")
+    node = Node(10)
+    linked = SinglyLinkedList(node)
+    linked.insert_head(12)
+    linked.insert_head(45)
+    linked.insert_head(22)
+    new_linked = prob_26(linked, 3)
+    print('after processing')
+    new_linked.print_list()

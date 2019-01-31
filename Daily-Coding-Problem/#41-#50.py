@@ -27,6 +27,41 @@ def prob_42(a_list, target):
     output = []
     _helper(output, target, a_list)
 
+def prob_43():
+    '''
+    Implement a stack that has the following methods:
+
+    push(val), which pushes an element onto the stack
+    pop(), which pops off and returns the topmost element of the stack. If there are no elements 
+    in the stack, then it should throw an error or return null.
+    max(), which returns the maximum value in the stack currently. If there are no elements 
+    in the stack, then it should throw an error or return null.
+
+    Each method should run in constant time.
+    '''
+
+    class Stack(object):
+        def __init__(self):
+            self.stack = []
+            self.max_value = None
+        
+        def push(self, val):
+            self.stack.append(val)
+            if val > self.max_value:
+                self.max_value = val
+        
+        def pop(self):
+            popped = self.stack.pop()
+            if popped == self.max_value:
+                self.max_value = self.stack[0]
+                for j in self.stack[1:]:
+                    if j > self.max_value:
+                        self.max_value = j
+
+        def max(self):
+            return self.max_value
+    
+
 def prob_44(a_list):
     '''
     We can determine how "out of order" an array A is by counting the number of inversions it has. Two elements A[i] 
@@ -45,6 +80,17 @@ def prob_44(a_list):
             if a_list[start_idx] > a_list[query_idx]:
                 output.append([a_list[start_idx], a_list[query_idx]])
     return len(output)
+
+def prob_45():
+    '''
+    Using a function rand5() that returns an integer from 1 to 5 (inclusive) with uniform probability, 
+    implement a function rand7() that returns an integer from 1 to 7 (inclusive).
+    '''
+    import random
+    def _rand5():
+        return random.randint(1, 5)
+    
+    return int(_rand5() * 7.0 / 5)
 
 def prob_46(string):
     '''
@@ -94,5 +140,19 @@ def prob_47(a_list):
             max_value = v
     return max_key
 
+def prob_49(a_list):
+    '''
+    Given an array of numbers, find the maximum sum of any contiguous subarray of the array.
+
+    For example, given the array [34, -50, 42, 14, -5, 86], the maximum sum would be 137, since we would 
+    take elements 42, 14, -5, and 86.
+
+    Given the array [-5, -1, -8, -9], the maximum sum would be 0, since we would not take any elements.
+
+    Do this in O(N) time.
+    '''
+    pass
+
+
 if __name__ == '__main__':
-    print prob_44([5, 4, 3, 2, 1])
+    prob_43()

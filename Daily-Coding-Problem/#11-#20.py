@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''Solve Daily Coding Problems from #11-#20'''
 
 def prob_11(prefix, word_list):
@@ -74,5 +75,62 @@ def prob_13(string, k0):
             max_string = o
     return ''.join(max_string)
 
+def prob_14():
+    '''
+    The area of a circle is defined as πr^2. Estimate π to 3 decimal places using a Monte Carlo method.
+
+    Hint: The basic equation of a circle is x2 + y2 = r2.
+    '''
+    import numpy as np 
+    import math
+    n_bins = 1000
+    R = 7
+    x = np.linspace(0, R, n_bins + 1)
+    y = [math.sqrt(R * R - e * e) for e in x]
+    dx = R / float(n_bins)
+    S = 4 * sum(y) * dx
+    return S / (R*R)
+
+def prob_18(a_list, k):
+    '''
+    Given an array of integers and a number k, where 1 <= k <= length of the array, compute the maximum 
+    values of each subarray of length k.
+
+    For example, given array = [10, 5, 2, 7, 8, 7] and k = 3, we should get: [10, 7, 8, 8], since:
+
+    10 = max(10, 5, 2)
+    7 = max(5, 2, 7)
+    8 = max(2, 7, 8)
+    8 = max(7, 8, 7)
+    Do this in O(n) time and O(k) space. You can modify the input array in-place and you do not need 
+    to store the results. You can simply print them out as you compute them.
+    '''
+    pass
+
+def prob_19(cost_matrix):
+    #TODO: check its validity
+    '''
+    A builder is looking to build a row of N houses that can be of K different colors. He has a goal of 
+    minimizing cost while ensuring that no two neighboring houses are of the same color.
+
+    Given an N by K matrix where the nth row and kth column represents the cost to build the nth house 
+    with kth color, return the minimum cost which achieves this goal.
+    '''
+
+    def _helper(cost_matrix, current_color, current_house):
+        if current_house == len(cost_matrix):
+            possible_choices = [cost_matrix[current_house][i] for i in range(len(cost_matrix[0])) if i != current_color]
+            return min(possible_choices)
+        else:
+            possible_colors = [i for i in range(len(cost_matrix[0])) if i != current_color]
+            possible_outcomes = []
+            for c in possible_colors:
+                possible_outcomes.append(cost_matrix[current_house][c] + _helper(cost_matrix, c, current_house + 1))
+                return min(possible_outcomes)
+    
+    return _helper(cost_matrix, None, 1)
+
+
+
 if __name__ == '__main__':
-    print(prob_11('de', ['dog', 'deer', 'deal']))
+    print prob_14()
