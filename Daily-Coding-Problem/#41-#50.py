@@ -140,6 +140,29 @@ def prob_47(a_list):
             max_value = v
     return max_key
 
+def prob_48(a_list, in_order=True):
+    '''
+    Given pre-order and in-order traversals of a binary tree, write a function to reconstruct the tree.
+
+    For example, given the following pre-order traversal:
+
+    [a, b, d, e, c, f, g]
+
+    And the following in-order traversal:
+
+    [d, b, e, a, f, c, g]
+
+    You should return the following tree:
+
+        a
+       / \
+      b   c
+     / \ / \
+    d  e f  g
+    '''
+    pass
+
+
 def prob_49(a_list):
     '''
     Given an array of numbers, find the maximum sum of any contiguous subarray of the array.
@@ -152,6 +175,26 @@ def prob_49(a_list):
     Do this in O(N) time.
     '''
     pass
+
+def prob_50(tree):
+    '''
+    Suppose an arithmetic expression is given as a binary tree. Each leaf is an integer and each internal 
+    node is one of '+', '−', '∗', or '/'.
+
+    Given the root to such a tree, write a function to evaluate it.
+
+    For example, given the following tree:
+
+        *
+       / \
+      +    +
+     / \  / \
+    3  2  4  5
+    You should return 45, as it is (3 + 2) * (4 + 5).
+    '''
+    pass
+    
+
 
 
 if __name__ == '__main__':

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 '''Solve Daily Coding Problems from #31-#40'''
+from outils import LinkedBinaryTree
 
 def prob_31(string1, string2):
     '''
@@ -72,6 +73,14 @@ def prob_35(a_list):
                 a_list[i + 1] = temp
     return a_list
 
+def prob_36(tree, root):
+    '''
+    Given the root to a binary search tree, find the second largest node in the tree.
+    '''
+    a_list = tree.preorder_show(root)
+    a_list = sorted(a_list)
+    return a_list[-2]
+
 def prob_37(a_list):
     '''
     The power set of a set is the set of all its subsets. Write a function that, given a set, 
@@ -142,4 +151,12 @@ def prob_40(a_list):
     return output[0]
 
 if __name__ == '__main__':
-    prob_37([1, 2, 3])
+    tree = LinkedBinaryTree()
+    pos1 = tree.add_root(1)
+    pos2 = tree.add_left(pos1, 2)
+    pos3 = tree.add_right(pos1, 3)
+    pos4 = tree.add_left(pos2, 4)
+    pos5 = tree.add_right(pos2, 5)
+    pos6 = tree.add_left(pos3, 6)
+    print tree.postorder_show(pos1)
+    # print prob_36(tree, pos1)

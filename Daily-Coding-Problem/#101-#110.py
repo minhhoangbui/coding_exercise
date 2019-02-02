@@ -1,68 +1,7 @@
 # -*- coding: utf-8 -*-
 '''Solve Daily Coding Problems from #101-#110'''
 
-class Node(object):
-    def __init__(self, value=None, next_node=None, prev_node=None):
-        self._value = value
-        self._next = next_node
-        self._prev = prev_node
-    
-
-class DoublyLinkedList(object):
-    def __init__(self):
-        self.trailer = Node(None, None, None)
-        self.header = Node(None, None, None)
-        self.trailer._prev = self.header
-        self.header._next = self.trailer
-        self._size = 0
-    
-    def __len__(self):
-        return self._size
-    
-    def insert_node(self, prev_node, next_node, node):
-        node._prev = prev_node
-        node._next = next_node
-        prev_node._next = node
-        next_node._prev = node
-        self._size += 1
-        return node
-    
-    def delete_node(self, node):
-        next_node = node._next
-        prev_node = node._prev
-        next_node._prev = prev_node
-        prev_node._next = next_node
-        self._size -= 1
-        value = node._value
-        node._prev = node._next = node._value = None
-        return value
-
-    def to_list(self):
-        res = []
-        current_node = self.header._next
-        current_value = current_node._value
-        while current_value:
-            res.append(current_value)
-            current_node = current_node._next
-            current_value = current_node._value
-        return res
-    
-    def reverse(self):
-        next_node = self.header._next
-        self.header._next = None
-        self.header._prev = next_node
-        current_node = next_node
-        while current_node._value:
-            next_node = current_node._next
-            last_node = current_node._prev
-            current_node._next = last_node
-            current_node._prev = next_node
-            current_node = next_node
-        next_trailer = self.trailer._prev
-        self.trailer._next = next_trailer
-        self.trailer._prev = None
-        self.header, self.trailer = self.trailer, self.header
-
+from outils import DoublyLinkedList
         
 def prob_102(a_list, K):
     '''
@@ -101,16 +40,32 @@ def prob_106(a_list):
     For example, [2, 0, 1, 0] returns true while [1, 1, 0, 1] returns false.
     '''
     pass
-    
+
+def prob_108(stringA, stringB):
+    '''
+    Given two strings A and B, return whether or not A can be shifted some number of times to get B.
+
+    For example, if A is abcde and B is cdeab, return true. If A is abc and B is acb, return false.
+    '''
+    if len(stringA) != len(stringB):
+        return False
+    string_len = len(stringA)
+    for i in xrange(-string_len, -1, 1):
+        temp = [stringA[j] for j in xrange(i, i + string_len)]
+        if ''.join(temp) == stringB:
+            return True
+    return False
+
+def prob_109(bit):
+    '''
+    Given an unsigned 8-bit integer, swap its even and odd bits. The 1st and 2nd bit should be swapped, 
+    the 3rd and 4th bit should be swapped, and so on.
+
+    For example, 10101010 should be 01010101. 11100010 should be 11010001.
+    Bonus: Can you do this in one line?
+    '''
+    return ''.join([bit[i + 1] if i % 2 == 0 else bit[i - 1] for i in range(len(bit))])
+
 
 if __name__ == '__main__':
-    linked = DoublyLinkedList()
-    node1 = Node(1)
-    node2 = Node(2)
-    node3 = Node(2)
-    node4 = Node(1)
-    linked.insert_node(linked.header, linked.trailer, node1)
-    linked.insert_node(linked.header, node1, node2)
-    linked.insert_node(linked.header, node2, node3)
-    linked.insert_node(linked.header, node3, node4)
-    print prob_104(linked)
+    print prob_109('11100010')

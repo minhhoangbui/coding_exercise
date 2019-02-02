@@ -1,23 +1,6 @@
 '''Solve Daily Coding Problems from #51-#60'''
 
-class Stack(object):
-    def __init__(self):
-        self.stack = []
-    
-    def __len__(self):
-        return len(self.stack)
-    
-    def is_empty(self):
-        return len(self.stack) == 0
-    
-    def push(self, element):
-        self.stack.append(element)
-    
-    def pop(self):
-        if self.is_empty():
-            raise ValueError('Stack is empty')
-        popped = self.stack.pop()
-        return popped
+
 
 def prob_52():
     '''

@@ -1,66 +1,5 @@
 '''Solve Daily Coding Problems from #71-#80'''
-
-class Node(object):
-    def __init__(self, value=None, next_node=None):
-        self._value = value
-        self._next = next_node
-    
-    def get_value(self):
-        return self._value
-    
-    def get_next(self):
-        return self._next
-    
-    def set_next(self, node):
-        self._next = node
-
-class SinglyLinkedList(object):
-
-    def __init__(self, node):
-        self._head = node
-        self.size = 1
-    
-    def __len__(self):
-        return self.size
-    
-    def insert_head(self, value):
-        new_node = Node(value, self._head)
-        self._head = new_node
-        self.size += 1
-    
-    def remove_head(self):
-        self._head = self._head.get_next()
-        self.size -= 1
-    
-    def get_head(self):
-        return self._head
-    
-    def set_head(self, node):
-        self._head = node
-    
-    def remove_nth_node(self, nth):
-        if nth == len(self):
-            current = self._head.get_next()
-            for _ in xrange(nth - 3):
-                current = current.get_next()
-            current.set_next(None)
-            self.size -= 1
-        elif nth == 1:
-            self.remove_head()
-        else:
-            before_nth = self._head.get_next()
-            for _ in xrange(nth - 3):
-                before_nth = before_nth.get_next()
-            nth = before_nth.get_next()
-            after_nth = nth.get_next()
-            before_nth.set_next(after_nth)
-            self.size -= 1
-    
-    def print_list(self):
-        current = self._head
-        while current:
-            print(current._value)
-            current = current.get_next()
+from outils import SNode, SinglyLinkedList, Queue, LinkedBinaryTree
 
 def prob_71():
     '''
@@ -125,11 +64,33 @@ def prob_79(a_list):
     '''
     pass
 
+def prob_80(tree):
+    '''
+    This problem was asked by Google.
+
+    Given the root of a binary tree, return a deepest node. For example, in the following tree, return d.
+
+        a
+       / \
+      b   c
+     /
+    d
+    '''
+    temp = []
+    queue = Queue()
+    queue.enqueue(tree.root())
+    while not queue.is_empty():
+        p = queue.dequeue()
+        temp.append(p.element())
+        for c in tree.children(p):
+            queue.enqueue(c)
+    return temp[-1]
+
+
 if __name__ == '__main__':
-    node = Node(10)
-    linked = SinglyLinkedList(node)
-    linked.insert_head(12)
-    linked.insert_head(45)
-    linked.insert_head(22)
-    prob_73(linked)
-    linked.print_list()
+    tree = LinkedBinaryTree()
+    pos1 = tree.add_root('a')
+    pos2 = tree.add_left(pos1, 'b')
+    pos3 = tree.add_right(pos1, 'c')
+    pos4 = tree.add_left(pos2, 'd')
+    print prob_80(tree)
