@@ -160,7 +160,10 @@ def prob_48(a_list, in_order=True):
      / \ / \
     d  e f  g
     '''
-    pass
+    #NOTE: Assume that it is the full binary tree
+    import math
+    tree_height = math.log(len(a_list) + 1, 2)
+    
 
 
 def prob_49(a_list):

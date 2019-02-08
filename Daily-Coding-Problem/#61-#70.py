@@ -12,6 +12,22 @@ def prob_61(x, y):
     import math
     return math.exp(y * math.log(x))
 
+def prob_62(m, n):
+    '''
+    There is an N by M matrix of zeroes. Given N and M, write a function to count the number of ways of starting at the top-left corner and getting to the bottom-right corner. You can only move right or down.
+
+    For example, given a 2 by 2 matrix, you should return 2, since there are two ways to get to the bottom-right:
+
+    Right, then down
+    Down, then right
+    Given a 5 by 5 matrix, there are 70 ways to get to the bottom-right.
+    '''
+    N = [[1] * n] * m
+    for i in range(m - 1):
+        for j in range(n - 1):
+            N[i + 1][j + 1] = N[i][j + 1] + N[i + 1][j]
+    return N[m - 1][n - 1]
+
 def prob_63(a_list, target):
     '''
     Given a 2D matrix of characters and a target word, write a function that returns whether the word can be found 
@@ -120,4 +136,4 @@ def prob_70(n):
 
 if __name__ == '__main__':
 
-    print prob_69([-10, -10, 5, 2])
+    print prob_62(3, 5)

@@ -6,7 +6,18 @@ def prob_96(a_list):
 
     For example, given [1,2,3], return [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]].
     '''
-    pass
+    def _helper(src, dst):
+        if len(src) == 0:
+            print(dst)
+            dst.pop()
+        else:
+            for i in xrange(len(src)):
+                dst.append(src[i])
+                _helper(src[0:i] + src[i+1:], dst)
+            if len(dst) != 0:
+                dst.pop()
+    _helper(a_list, [])
+
 
 def prob_98(a_list, target):
     '''
@@ -31,3 +42,5 @@ def prob_98(a_list, target):
                 locations.append([i, j])
     pass
     
+if __name__ == '__main__':
+    prob_96([1, 2, 3, 4])

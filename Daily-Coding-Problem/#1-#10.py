@@ -1,6 +1,7 @@
 '''Solve Daily Coding Problems from #1-#10'''
 import copy
 from operator import mul
+from outils import LinkedBinaryTree
 
 def prob_1(nums, target):
     '''
@@ -166,7 +167,7 @@ def prob_7(message):
        
     _helper(a_list, chosen)
 
-def prob_8():
+def prob_8(tree):
     '''
     A unival tree (which stands for "universal value") is a tree where all nodes under it have the same value.
 
@@ -182,6 +183,22 @@ def prob_8():
         / \
        1   1
     '''
+    #NOTE: We use binary tree for this exercise
+    def _helper(tree, current):
+        if current is not None:
+            left = tree.left(current)
+            right = tree.right(current)
+            if left is None and right is None:
+                count['result'] += 1
+            elif left.element() == right.element():
+                count['result'] += 1
+            _helper(tree, left)
+            _helper(tree, right)
+    
+    count = {'result': 0}
+    root = tree.root()
+    _helper(tree, root)
+    return count['result']
 
 def prob_9(a_list):
     '''
@@ -215,5 +232,13 @@ def prob_10(n):
 
             
 if __name__ == '__main__':
-    prob_10(2)
+    tree = LinkedBinaryTree()
+    pos1 = tree.add_root(0)
+    pos2 = tree.add_left(pos1, 1)
+    pos3 = tree.add_right(pos1, 0)
+    pos4 = tree.add_left(pos3, 1)
+    pos5 = tree.add_right(pos3, 0)
+    pos6 = tree.add_left(pos4, 1)
+    pos7 = tree.add_right(pos4, 1)
+    print prob_8(tree)
 

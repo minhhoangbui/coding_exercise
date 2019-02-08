@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 '''Solve Daily Coding Problems from #101-#110'''
 
-from outils import DoublyLinkedList
+from outils import DoublyLinkedList, LinkedBinaryTree
         
 def prob_102(a_list, K):
     '''
@@ -41,6 +41,18 @@ def prob_106(a_list):
     '''
     pass
 
+def prob_107(tree):
+    '''
+    Print the nodes in a binary tree level-wise. For example, the following should print 1, 2, 3, 4, 5.
+
+      1
+     / \
+    2   3
+       / \
+      4   5
+    '''
+    return tree.breadthfirst_show()
+
 def prob_108(stringA, stringB):
     '''
     Given two strings A and B, return whether or not A can be shifted some number of times to get B.
@@ -66,6 +78,39 @@ def prob_109(bit):
     '''
     return ''.join([bit[i + 1] if i % 2 == 0 else bit[i - 1] for i in range(len(bit))])
 
+def prob_110(tree):
+    '''
+    Given a binary tree, return all paths from the root to leaves.
+
+    For example, given the tree
+
+        1
+       / \
+      2   3
+         / \
+        4   5
+    it should return [[1, 2], [1, 3, 4], [1, 3, 5]].
+    '''
+    result = []
+    def _helper(tree, current):
+        if tree.is_leaf(current):
+            result.append(current.element())
+            print(result)
+            result.pop()
+        else:
+            result.append(current.element())
+            for c in tree.children(current):
+                _helper(tree, c)
+            result.pop()
+
+    root = tree.root()
+    _helper(tree, root)
 
 if __name__ == '__main__':
-    print prob_109('11100010')
+    tree = LinkedBinaryTree()
+    pos1 = tree.add_root(1)
+    pos2 = tree.add_left(pos1, 2)
+    pos3 = tree.add_right(pos1, 3)
+    pos4 = tree.add_left(pos3, 4)
+    pos5 = tree.add_right(pos3, 5)
+    prob_110(tree)

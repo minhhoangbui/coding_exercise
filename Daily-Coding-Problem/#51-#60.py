@@ -1,6 +1,6 @@
 '''Solve Daily Coding Problems from #51-#60'''
 
-
+from outils import Stack
 
 def prob_52():
     '''

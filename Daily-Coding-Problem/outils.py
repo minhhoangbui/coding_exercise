@@ -162,7 +162,6 @@ class DoublyLinkedList(object):
         self.header, self.trailer = self.trailer, self.header
 
 class Tree:
-
     class Position:
         
         @abstractmethod
@@ -387,6 +386,7 @@ class LinkedBinaryTree(_BinaryTree):
             result.append(p.element())
             for c in self.children(p):
                 queue.enqueue(c)
+        return result
     
 if __name__ == "__main__":
     queue = Queue()
