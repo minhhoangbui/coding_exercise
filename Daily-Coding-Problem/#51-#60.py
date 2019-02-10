@@ -133,7 +133,27 @@ def prob_60(a_list):
     Given the multiset {15, 5, 20, 10, 35}, it would return false, since we can't split it up into two subsets 
     that add up to the same sum.
     '''
-    pass
+    import itertools
+
+    mid = sum(a_list) / 2.0
+    if int(mid) != mid:
+        return False
+    # The following part check the case when a subset has 1 element
+    for e in a_list:
+        if e == mid:
+            return True
+        if e > mid:
+            return False
+    if len(a_list) <= 3:
+        return False
+    
+    for length in xrange(2, len(a_list) / 2 + 1):
+        temp_list = list(itertools.combinations(a_list, length))
+        for f in temp_list:
+            if sum(f) == mid:
+                return True
+    return False
+    
 
 if __name__ == '__main__':
-    prob_53()
+    print prob_60([15, 5, 20, 10, 35, 15, 10])

@@ -49,7 +49,24 @@ def prob_77(a_list):
 
     For example, given [(1, 3), (5, 8), (4, 10), (20, 25)], you should return [(1, 3), (4, 10), (20, 25)].
     '''
-    pass
+    def _check_overlap(current, e):
+        if current[1] < e[0] or e[1] < current[0]:
+            return False
+        return True
+    
+    def _merge(current, e):
+        return (min(current[0], e[0]), max(current[1], e[1]))
+
+    for i in xrange(len(a_list) - 1):
+        if i == len(a_list) - 1:
+            break
+        current = a_list[i]
+        for e in a_list[i+1:]:
+            if _check_overlap(current, e):
+                current = _merge(current, e)
+                a_list[i] = current
+                a_list.remove(e)
+    return a_list
 
 def prob_79(a_list):
     '''
@@ -88,9 +105,4 @@ def prob_80(tree):
 
 
 if __name__ == '__main__':
-    tree = LinkedBinaryTree()
-    pos1 = tree.add_root('a')
-    pos2 = tree.add_left(pos1, 'b')
-    pos3 = tree.add_right(pos1, 'c')
-    pos4 = tree.add_left(pos2, 'd')
-    print prob_80(tree)
+    print prob_77([(1, 3), (5, 8), (4, 10), (20, 25), (-1, 2), (6, 8)])

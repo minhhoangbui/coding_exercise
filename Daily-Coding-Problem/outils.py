@@ -387,6 +387,54 @@ class LinkedBinaryTree(_BinaryTree):
             for c in self.children(p):
                 queue.enqueue(c)
         return result
+
+class Vertex:
+    def __init__(self, x):
+        self._element = x
+    
+    def element(self):
+        return self._element
+    
+    def __hash__(self):
+        return hash(id(self))
+
+class Edge:
+    def __init__(self, u, v, x):
+        self._origin = u
+        self._destination = v
+        self._element = x
+    
+    def endpoints(self):
+        return (self._origin, self._destination)
+    
+    def opposite(self, u):
+        return self._destination if v is not self._origin else self._origin
+    
+    def element(self):
+        return self._element
+    
+    def __hash__(self):
+        return hash((self._origin, self._destination))
+
+class Graph:
+    def __init__(self, directed=True):
+        self._outgoing = {}
+        self._incoming = {} if directed else self._outgoing
+    
+    def is_directed(self):
+        return self._incoming is not self._outgoing
+    
+    def vertex_count(self):
+        return len(self._outgoing)
+    
+    def vertices(self):
+        return self._outgoing.keys()
+    
+    def edge_count(self):
+        total = sum(len(self._outgoing[v]) for v in self.vertices())
+        return total if self.is_directed() else total // 2
+    
+
     
 if __name__ == "__main__":
     queue = Queue()

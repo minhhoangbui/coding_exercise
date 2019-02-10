@@ -60,13 +60,23 @@ def prob_117(tree):
         curr += 2**d        
     return level_sum.index(min(level_sum))
 
+def prob_119(a_list):
+    '''
+    Given a set of closed intervals, find the smallest set of numbers that covers all the intervals. If 
+    there are multiple smallest sets, return any of them.
+
+    For example, given the intervals [0, 3], [2, 6], [3, 4], [6, 9], one set of numbers that covers all 
+    these intervals is {3, 6}.
+    '''
+    min_max = a_list[0][1]
+    max_min = a_list[0][0]
+    for e in a_list[1:]:
+        if e[1] < min_max:
+            min_max = e[1]
+        if e[0] > max_min:
+            max_min = e[0]
+    return [min_max, max_min]
+        
+
 if __name__ == '__main__':
-    tree = LinkedBinaryTree()
-    pos1 = tree.add_root(100)
-    pos2 = tree.add_left(pos1, 7)
-    pos3 = tree.add_right(pos1, 6)
-    pos4 = tree.add_left(pos2, 1)
-    pos5 = tree.add_right(pos2, 2)
-    pos6 = tree.add_left(pos3, 8)
-    pos7 = tree.add_right(pos3, 4)
-    print(prob_117(tree))
+    print prob_119([[0, 3], [2, 6], [3, 4], [6, 9]])

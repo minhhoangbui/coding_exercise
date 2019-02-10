@@ -36,7 +36,8 @@ def prob_89(tree):
     that the key in the left child must be less than or equal to the root and the key in the right 
     child must be greater than or equal to the root.
     '''
-    
+    #NOTE: *break* is used to break loop while *return* is used to end a function, so *return* is not 
+    # suitable in recursion when it breaks only the current scope, not the entire function
     def _helper(tree, current):
         # NOTE: we could use 'nonlocal' to change the scope in nested function in Python3
         left = tree.left(current)
