@@ -95,9 +95,11 @@ class SinglyLinkedList(object):
     
     def print_list(self):
         current = self._head
+        output = []
         while current:
-            print(current._value)
+            output.append(current._value)
             current = current.get_next()
+        return output
 
 class DNode(object):
     def __init__(self, value=None, next_node=None, prev_node=None):
@@ -388,35 +390,36 @@ class LinkedBinaryTree(_BinaryTree):
                 queue.enqueue(c)
         return result
 
-class Vertex:
-    def __init__(self, x):
-        self._element = x
-    
-    def element(self):
-        return self._element
-    
-    def __hash__(self):
-        return hash(id(self))
-
-class Edge:
-    def __init__(self, u, v, x):
-        self._origin = u
-        self._destination = v
-        self._element = x
-    
-    def endpoints(self):
-        return (self._origin, self._destination)
-    
-    def opposite(self, u):
-        return self._destination if v is not self._origin else self._origin
-    
-    def element(self):
-        return self._element
-    
-    def __hash__(self):
-        return hash((self._origin, self._destination))
-
 class Graph:
+
+    class _Vertex:
+        def __init__(self, x):
+            self._element = x
+        
+        def element(self):
+            return self._element
+        
+        def __hash__(self):
+            return hash(id(self))
+
+    class _Edge:
+        def __init__(self, u, v, x):
+            self._origin = u
+            self._destination = v
+            self._element = x
+        
+        def endpoints(self):
+            return (self._origin, self._destination)
+        
+        def opposite(self, u):
+            return self._destination if v is not self._origin else self._origin
+        
+        def element(self):
+            return self._element
+        
+        def __hash__(self):
+            return hash((self._origin, self._destination))
+
     def __init__(self, directed=True):
         self._outgoing = {}
         self._incoming = {} if directed else self._outgoing
@@ -433,6 +436,36 @@ class Graph:
     def edge_count(self):
         total = sum(len(self._outgoing[v]) for v in self.vertices())
         return total if self.is_directed() else total // 2
+    
+    def edges(self):
+        result = set()
+        for secondary in self._outgoing.values():
+            result.update(secondary.values())
+        return result
+    
+    def get_edge(self, u, v):
+        return self._outgoing[u].get(v)
+    
+    def degree(self, u, outgoing=True):
+        adj = self._outgoing if outgoing else self._incoming
+        return len(adj[u])
+    
+    def incident_edges(self, u, outgoing=True):
+        adj = self._outgoing if outgoing else self._incoming
+        for edge in adj[u].values():
+            yield edge
+        
+    def insert_vertex(self, x):
+        v = self._Vertex(x)
+        self._outgoing[v] = {}
+        if self.is_directed():
+            self._incoming[v] = {}
+        return v
+    
+    def insert_edge(self, u, v, x=None):
+        edge = self._Edge(u, v, x)
+        self._outgoing[u][v] = edge
+        self._incoming[v][u] = edge
     
 
     

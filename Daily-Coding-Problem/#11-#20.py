@@ -91,6 +91,34 @@ def prob_14():
     S = 4 * sum(y) * dx
     return S / (R*R)
 
+def prob_16():
+    '''
+    You run an e-commerce website and want to record the last N order ids in a log. Implement a data structure 
+    to accomplish this, with the following API:
+
+        record(order_id): adds the order_id to the log
+        get_last(i): gets the ith last element from the log. i is guaranteed to be smaller than or equal to N.
+
+    You should be as efficient with time and space as possible.
+    '''
+
+    class Queue:
+        def __init__(self, N):
+            self._limit = N
+            self._size = 0
+            self.data = []
+        
+        def record(self, order_id):
+            if self._size < self._limit:
+                self.data.append(order_id)
+                self._size += 1
+            else:
+                self.data = self.data[:-1]
+                self.data.append(order_id)
+
+        def get_last(self, i):
+            return self.data[i]
+
 def prob_18(a_list, k):
     '''
     Given an array of integers and a number k, where 1 <= k <= length of the array, compute the maximum 

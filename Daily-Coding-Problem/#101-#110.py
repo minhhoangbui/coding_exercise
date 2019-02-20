@@ -9,9 +9,23 @@ def prob_102(a_list, K):
 
     For example, if the list is [1, 2, 3, 4, 5] and K is 9, then it should return [2, 3, 4].
     '''
-    pass
-
-
+    temp = K
+    for i in range(len(a_list)):
+        if a_list[i] > K:
+            continue
+        temp = K
+        result = []
+        j = i
+        while temp > 0:
+            try:
+                temp = temp - a_list[j]
+                result.append(a_list[j])
+                j += 1
+            except IndexError:
+                break
+        if temp == 0:
+            print result
+        
 def prob_103(string, char_set):
     '''
     Given a string and a set of characters, return the shortest substring containing all the characters in the set.
@@ -107,10 +121,4 @@ def prob_110(tree):
     _helper(tree, root)
 
 if __name__ == '__main__':
-    tree = LinkedBinaryTree()
-    pos1 = tree.add_root(1)
-    pos2 = tree.add_left(pos1, 2)
-    pos3 = tree.add_right(pos1, 3)
-    pos4 = tree.add_left(pos3, 4)
-    pos5 = tree.add_right(pos3, 5)
-    prob_110(tree)
+    prob_102([1, 2, 3, 4, 5], 9)
