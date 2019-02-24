@@ -14,15 +14,17 @@ def prob_1(nums, target):
         tmp = copy.copy(nums)
         residual = target - val
         tmp.remove(val)
-        if residual in nums:
+        if residual in tmp:
             return True
-        return False
+    return False
 
 def prob_2(a_list):
     '''
-    Given an array of integers, return a new array such that each element at index i of the new array is the product of all the numbers in the original array except the one at i.
+    Given an array of integers, return a new array such that each element at index i of the new array is the 
+    product of all the numbers in the original array except the one at i.
 
-    For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120, 60, 40, 30, 24]. If our input was [3, 2, 1], the expected output would be [2, 3, 6].
+    For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120, 60, 40, 30, 24]. If our 
+    input was [3, 2, 1], the expected output would be [2, 3, 6].
 
     Follow-up: what if you can't use division?
     '''
@@ -35,8 +37,8 @@ def prob_2(a_list):
 
 def prob_3():
     '''
-    Given the root to a binary tree, implement serialize(root), which serializes the tree into a string, and deserialize(s), which deserializes 
-    the string back into the tree.
+    Given the root to a binary tree, implement serialize(root), which serializes the tree into a string, 
+    and deserialize(s), which deserializes the string back into the tree.
 
     For example, given the following Node class
 
